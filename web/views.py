@@ -15,9 +15,10 @@ def yuming(request):
     :param request: 请求
     :return:
     """
+    path='yuming'
     if request.method == 'POST':
         files=request.FILES.getlist('my_files')
-        dir=return_files_dir(files)
+        dir=return_files_dir(files,path)
         downloadfile=main.yuming(dir)
         response=download.download(downloadfile)
         return response
@@ -25,10 +26,11 @@ def yuming(request):
     return render(request, 'result.html')
 
 
-def return_files_dir(files):
+def return_files_dir(files,path):
     basedir='/tmp'
+    basedir2=os.path.join(basedir,path)
     ctime=time.strftime("%Y%m%d%H%M%S", time.localtime())
-    dir=os.path.join(basedir,ctime)
+    dir=os.path.join(basedir2,ctime)
     os.makedirs(dir)
 
     for f in files:
