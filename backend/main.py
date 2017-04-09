@@ -8,6 +8,7 @@ import time,datetime
 
 
 from backend.dh_func import daohang_path,dianshang_path,ruanjian_path
+
 def yuming(dir):
     dir=dir
     files=os.listdir(dir)
@@ -42,7 +43,10 @@ def yuming(dir):
             sheet.write(i+temp,2,ipList[i])
         temp=temp+i+1
     ctime=time.strftime("%Y-%m-%d",time.localtime())
-    wbk.save(u"d:\python\域名汇总-%s.xls" % (ctime))
+    basedir=os.path.dirname(dir)
+    filepath=os.path.join(basedir,u"域名汇总-%s.xls" %(ctime))
+    wbk.save(filepath)
+    return filepath
 
 def daohang(dir):
     dir=dir
@@ -121,7 +125,10 @@ def daohang(dir):
 
 
     ctime=time.strftime("%Y-%m-%d",time.localtime())
-    wbk.save(u"d:\python\导航汇总-%s.xls" % (ctime))
+    basedir = os.path.dirname(dir)
+    filepath = os.path.join(basedir, u"导航汇总-%s.xls" % (ctime))
+    wbk.save(filepath)
+    return filepath
 
 def dianshang(dir):
     dir=dir
@@ -166,7 +173,10 @@ def dianshang(dir):
 
 
     ctime=time.strftime("%Y-%m-%d",time.localtime())
-    wbk.save(u"d:\python\电商汇总-%s.xls" % (ctime))
+    basedir = os.path.dirname(dir)
+    filepath = os.path.join(basedir, u"电商汇总-%s.xls" % (ctime))
+    wbk.save(filepath)
+    return filepath
 
 
 def ruanjian(dir):
@@ -262,7 +272,10 @@ def ruanjian(dir):
             temp = temp + i + 1
 
     ctime = time.strftime("%Y-%m-%d", time.localtime())
-    wbk.save(u"d:\python\软件汇总-%s.xls" % (ctime))
+    basedir = os.path.dirname(dir)
+    filepath = os.path.join(basedir, u"软件汇总-%s.xls" % (ctime))
+    wbk.save(filepath)
+    return filepath
 
 if __name__=="__main__":
     #yuming()
