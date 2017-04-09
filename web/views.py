@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from web.forms import FileUploadForm
 from backend import main,download
 import time,os
@@ -20,8 +20,8 @@ def yuming(request):
         files=request.FILES.getlist('my_files')
         dir=return_files_dir(files,path)
         downloadfile=main.yuming(dir)
-        response=download.download(downloadfile)
-        return response
+        #response=download.download(downloadfile)
+        return redirect('http://doexcel.miguan.com%s' % (downloadfile))
 
     return render(request, 'result.html')
 
