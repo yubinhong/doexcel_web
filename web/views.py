@@ -22,7 +22,8 @@ def yuming(request):
         downloadfile=main.yuming(dir)
         print(downloadfile)
         #response=download.download(downloadfile)
-        return redirect('http://doexcel.miguan.com%s' % (downloadfile))
+        #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
+        return redirect('%s' % (downloadfile))
 
     return render(request, 'result.html')
 
