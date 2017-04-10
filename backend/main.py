@@ -51,7 +51,7 @@ def yuming(dir):
                 sheet.write(i + temp, 2, ipList[i])
             temp = temp + i + 1
         else:
-            domainList = sh.col_values(start_rowx=6, colx=1)
+            domainList = sh.col_values(start_rowx=6, colx=0)
             ipList = sh.col_values(start_rowx=6, colx=4)
             for i in range(0,len(ipList)-2):
                 sheet.write(i+temp,0,atime)
