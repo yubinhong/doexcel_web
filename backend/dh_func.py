@@ -99,10 +99,13 @@ def uniq(path='D:\python\\电商汇总-2017-04-07.xls'):
     data=pandas.DataFrame()
     data['timeList']=timeList
     data['countList']=countList
+    data['qidList']=qidList
     data=data.groupby(['timeList','qidList']).sum()
     data_dict=data.to_dict()
     timeList=list(data_dict['countList'].keys())
     countList=list(data_dict['countList'].values())
+    print(data_dict)
+    print(timeList[0][0])
 
     wbk = xlwt.Workbook()
     sheet = wbk.add_sheet(u"电商汇总",cell_overwrite_ok=True)
@@ -110,11 +113,13 @@ def uniq(path='D:\python\\电商汇总-2017-04-07.xls'):
     sheet.write(0, 1, u"渠道子ID")
     sheet.write(0, 2, u"订单数")
     for i in range(0, len(timeList)):
-        sheet.write(i, 0, timeList[i])
-        sheet.write(i, 1, qidList[i])
+        sheet.write(i, 0, timeList[i][0])
+        sheet.write(i, 1, timeList[i][1])
         sheet.write(i, 2, str(countList[i]))
 
     wbk.save(path)
+
+
 
 
 
