@@ -4,6 +4,10 @@ from backend import main,download
 import time,os
 # Create your views here.
 
+
+def index(request):
+    return render(request,'index.html')
+
 def yuming(request):
     """
       文件接收 view
@@ -25,7 +29,76 @@ def yuming(request):
         #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
         return redirect('%s' % (downloadfile))
 
-    return render(request, 'result.html')
+    return render(request, 'yuming.html')
+
+def dianshang(request):
+    """
+      文件接收 view
+      :param request: 请求
+      :return:
+      """
+    """
+    文件接收 view
+    :param request: 请求
+    :return:
+    """
+    path='dianshang'
+    if request.method == 'POST':
+        files=request.FILES.getlist('my_files')
+        dir=return_files_dir(files,path)
+        downloadfile=main.dianshang(dir)
+        print(downloadfile)
+        #response=download.download(downloadfile)
+        #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
+        return redirect('%s' % (downloadfile))
+
+    return render(request, 'dianshang.html')
+
+def daohang(request):
+    """
+      文件接收 view
+      :param request: 请求
+      :return:
+      """
+    """
+    文件接收 view
+    :param request: 请求
+    :return:
+    """
+    path='daohang'
+    if request.method == 'POST':
+        files=request.FILES.getlist('my_files')
+        dir=return_files_dir(files,path)
+        downloadfile=main.daohang(dir)
+        print(downloadfile)
+        #response=download.download(downloadfile)
+        #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
+        return redirect('%s' % (downloadfile))
+
+    return render(request, 'daohang.html')
+
+def ruanjian(request):
+    """
+      文件接收 view
+      :param request: 请求
+      :return:
+      """
+    """
+    文件接收 view
+    :param request: 请求
+    :return:
+    """
+    path='ruanjian'
+    if request.method == 'POST':
+        files=request.FILES.getlist('my_files')
+        dir=return_files_dir(files,path)
+        downloadfile=main.ruanjian(dir)
+        print(downloadfile)
+        #response=download.download(downloadfile)
+        #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
+        return redirect('%s' % (downloadfile))
+
+    return render(request, 'ruanjian.html')
 
 
 def return_files_dir(files,path):

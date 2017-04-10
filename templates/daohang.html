@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>结果</title>
+    <title>导航汇总</title>
 </head>
 <body>
-    <form enctype="multipart/form-data" method="post" action="/yuming/">
+    <form enctype="multipart/form-data" method="post" action="/daohang/">
         {% csrf_token %}
         <input type="file" name="my_files" multiple="multiple"/>
         <br/>
-        <input type="submit" value="汇总">
+        <input type="submit" value="导航汇总">
     </form>
 </body>
 </html>
