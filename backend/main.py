@@ -136,10 +136,10 @@ def daohang(dir):
                     timeList = [datetime.datetime(*x[:3]) for x in timeList]
             browser2List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
-            print(len(timeList))
-            print(len(qidList))
-            print(len(browser2List))
-            qidList=[re.findall(r"[0-9]{5}",x)[0] for x in qidList[:-1]]
+            try:
+                qidList=[re.findall(r"[0-9]{5}",x)[0] for x in qidList[:-1]]
+            except Exception as e:
+                qidList = [re.findall(r"[0-9]{5}", x)[0] for x in qidList[:-3]]
             qidList= [file.split(".")[0]+"-"+x for x in qidList]
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
