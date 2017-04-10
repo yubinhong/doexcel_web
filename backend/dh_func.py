@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 #coding:utf-8
 #__author__="ybh"
-import xlwt
+import xlwt,xlrd
 import os,time
 import codecs
 import chardet
+import pandas
 #file=open("D:\余斌宏\数据模板\导航\\2345导航33883子渠道导出.xls",'r')
 #result=file.readlines()
 #for i in range(len(result)-1):
@@ -87,7 +88,42 @@ def bianma(path):
     return code
 
 
+#对电商相同的日期进行相加
+def uniq(path='D:\python\\电商汇总-2017-04-07.xls'):
+    wb=xlrd.open_workbook(path,encoding_override='gb2312')
+    sh=wb.sheet_by_index(0)
+    timeList=sh.col_values(start_rowx=1,colx=0)
+    qidList=sh.col_values(start_rowx=1,colx=1)
+    countList=sh.col_values(start_rowx=1,colx=2)
+    countList=[int(x) for x in countList]
+    data=pandas.DataFrame()
+    data['timeList']=timeList
+    data['countList']=countList
+    data=data.groupby('timeList').sum()
+    data_dict=data.to_dict()
+    timeList=list(data_dict['countList'].keys())
+    countList=list(data_dict['countList'].values())
+
+    wbk = xlwt.Workbook()
+    sheet = wbk.add_sheet(u"电商汇总",cell_overwrite_ok=True)
+    sheet.write(0, 0, u"时间")
+    sheet.write(0, 1, u"渠道子ID")
+    sheet.write(0, 2, u"订单数")
+    for i in range(0, len(timeList)):
+        sheet.write(i, 0, timeList[i])
+        sheet.write(i, 1, qidList[i])
+        sheet.write(i, 2, str(countList[i]))
+
+    wbk.save(path)
+
+
+
+
+
+
 if __name__=="__main__":
     #get_newpath()
-    dianshang_path()
+    #dianshang_path()
+    uniq()
+
 

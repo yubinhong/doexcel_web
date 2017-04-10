@@ -7,7 +7,7 @@ import os
 import time,datetime
 
 
-from backend.dh_func import daohang_path,dianshang_path,ruanjian_path
+from backend.dh_func import daohang_path,dianshang_path,ruanjian_path,uniq
 
 def yuming(dir):
     dir=dir
@@ -211,6 +211,7 @@ def dianshang(dir):
     basedir = os.path.dirname(dir)
     filepath = os.path.join(basedir, u"电商汇总-%s.xls" % (ctime))
     wbk.save(filepath)
+
     return filepath
 
 
@@ -310,6 +311,7 @@ def ruanjian(dir):
     basedir = os.path.dirname(dir)
     filepath = os.path.join(basedir, u"软件汇总-%s.xls" % (ctime))
     wbk.save(filepath)
+    uniq(filepath)
     return filepath
 
 if __name__=="__main__":
