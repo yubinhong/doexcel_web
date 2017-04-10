@@ -32,7 +32,7 @@ def yuming(dir):
         atime=re.findall(r"[0-9]{4}-[0-9]{2}-[0-9]{2}",atime)[0]
         check1=sh.cell(5,1).value
         check2=sh.cell(7,1).value
-        if check1=="URL地址":
+        if check1.strip()=="URL地址":
             domainList = sh.col_values(start_rowx=6,colx=1)
             ipList = sh.col_values(start_rowx=6,colx=3)
             for i in range(0, len(ipList) - 2):
@@ -41,7 +41,7 @@ def yuming(dir):
                 sheet.write(i + temp, 2, ipList[i])
             temp = temp + i + 1
 
-        if check2=="浏览次数":
+        if check2.strip()=="浏览次数":
             domain=sh.cell(1,1).value
             timeList=sh.col_values(start_rowx=9,colx=0)
             ipList=sh.col_values(start_rowx=9,colx=3)
