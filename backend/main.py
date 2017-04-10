@@ -188,7 +188,10 @@ def dianshang(dir):
             try:
                 timeList = [time.strptime(x, "%Y/%m/%d %H:%M") for x in timeList]
             except Exception as e:
-                timeList = [time.strptime(x, "%Y/%m/%d") for x in timeList]
+                try:
+                    timeList = [time.strptime(x, "%Y/%m/%d") for x in timeList]
+                except Exception as e:
+                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
         timeList = [datetime.datetime(*x[:3]) for x in timeList]
         for i in range(0,len(timeList)):
             sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
