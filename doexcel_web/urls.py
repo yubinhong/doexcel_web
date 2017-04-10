@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^daohang/',views.daohang),
     url(r'^dianshang/', views.dianshang),
     url(r'^ruanjian/', views.ruanjian),
-    url(r'^$/', views.index),
+    url(r'^$', views.index),
 ]
