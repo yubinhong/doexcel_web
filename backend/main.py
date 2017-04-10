@@ -30,18 +30,34 @@ def yuming(dir):
 
         #time=sh.cell(4,0).value
         atime=re.findall(r"[0-9]{4}-[0-9]{2}-[0-9]{2}",atime)[0]
-        if "昨日报表" not in file:
-            domainList = sh.col_values(start_rowx=6,colx=0)
+        check1=sh.cell(5,1).value
+        check2=sh.cell(7,1).value
+        if check1=="URL地址":
+            domainList = sh.col_values(start_rowx=6,colx=1)
             ipList = sh.col_values(start_rowx=6,colx=3)
+            for i in range(0, len(ipList) - 2):
+                sheet.write(i + temp, 0, atime)
+                sheet.write(i + temp, 1, domainList[i])
+                sheet.write(i + temp, 2, ipList[i])
+            temp = temp + i + 1
+
+        if check2=="浏览次数":
+            domain=sh.cell(1,1).value
+            timeList=sh.col_values(start_rowx=9,colx=0)
+            ipList=sh.col_values(start_rowx=9,colx=3)
+            for i in range(0, len(ipList) - 2):
+                sheet.write(i + temp, 0, timeList[i])
+                sheet.write(i + temp, 1, domain)
+                sheet.write(i + temp, 2, ipList[i])
+            temp = temp + i + 1
         else:
             domainList = sh.col_values(start_rowx=6, colx=1)
             ipList = sh.col_values(start_rowx=6, colx=4)
-
-        for i in range(0,len(domainList)-2):
-            sheet.write(i+temp,0,atime)
-            sheet.write(i+temp,1,domainList[i])
-            sheet.write(i+temp,2,ipList[i])
-        temp=temp+i+1
+            for i in range(0,len(ipList)-2):
+                sheet.write(i+temp,0,atime)
+                sheet.write(i+temp,1,domainList[i])
+                sheet.write(i+temp,2,ipList[i])
+            temp=temp+i+1
     ctime=time.strftime("%Y-%m-%d",time.localtime())
     basedir=os.path.dirname(dir)
     filepath=os.path.join(basedir,u"域名汇总-%s.xls" %(ctime))
