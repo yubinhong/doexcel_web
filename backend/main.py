@@ -130,7 +130,7 @@ def daohang(dir):
                 timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-1]]
             except Exception as e:
                 try:
-                    timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-3]]
+                    timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-2]]
                 except Exception as e:
                     timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-1]]
                     timeList = [datetime.datetime(*x[:3]) for x in timeList]
