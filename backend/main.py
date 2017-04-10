@@ -183,7 +183,7 @@ def dianshang(dir):
          #   timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
         #except Exception as e:
         try:
-            timeList = [time.strptime(x, "%Y%m%d") for x in timeList]
+            timeList = [time.strptime(x.strip(), "%Y%m%d") for x in timeList]
         except Exception as e:
             try:
                 timeList = [time.strptime(x, "%Y/%m/%d %H:%M") for x in timeList]
