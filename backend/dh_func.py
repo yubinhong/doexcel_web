@@ -113,9 +113,9 @@ def uniq(path='D:\python\\电商汇总-2017-04-07.xls'):
     sheet.write(0, 1, u"渠道子ID")
     sheet.write(0, 2, u"订单数")
     for i in range(0, len(timeList)):
-        sheet.write(i, 0, timeList[i][0])
-        sheet.write(i, 1, timeList[i][1])
-        sheet.write(i, 2, str(countList[i]))
+        sheet.write(i+1, 0, timeList[i][0])
+        sheet.write(i+1, 1, timeList[i][1])
+        sheet.write(i+1, 2, str(countList[i]))
 
     wbk.save(path)
 
