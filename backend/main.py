@@ -184,6 +184,8 @@ def dianshang(dir):
         #except Exception as e:
         try:
             timeList = [time.strptime(x.strip(), "%Y%m%d") for x in timeList]
+        except TypeError as e:
+            timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
         except Exception as e:
             try:
                 timeList = [time.strptime(x, "%Y/%m/%d %H:%M") for x in timeList]
@@ -192,6 +194,7 @@ def dianshang(dir):
                     timeList = [time.strptime(x, "%Y/%m/%d") for x in timeList]
                 except Exception as e:
                     timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
+
         timeList = [datetime.datetime(*x[:3]) for x in timeList]
         for i in range(0,len(timeList)):
             sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
