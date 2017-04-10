@@ -129,7 +129,10 @@ def daohang(dir):
             try:
                 timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-1]]
             except Exception as e:
-                timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-1]]
+                try:
+                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-1]]
+                except Exception as e:
+                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-2]]
                 timeList = [datetime.datetime(*x[:3]) for x in timeList]
             browser2List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
