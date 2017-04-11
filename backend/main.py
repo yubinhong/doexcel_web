@@ -237,75 +237,36 @@ def ruanjian(dir):
         sh = wb.sheet_by_index(0)  # 第一个表
 
         # time=sh.cell(4,0).value
-        check = sh.cell(0, 0).value
+
+        timeList = sh.col_values(start_rowx=1, colx=0)
+        countList = sh.col_values(start_rowx=1, colx=1)
+        try:
+            timeList = [time.strptime(x.strip(), "%Y%m%d") for x in timeList]
+
+        except Exception as e:
+            try:
+                timeList = [time.strptime(x, "%Y/%m/%d %H:%M") for x in timeList]
+            except Exception as e:
+                try:
+                    timeList = [time.strptime(x, "%Y/%m/%d") for x in timeList]
+                except Exception as e:
+                    try:
+                        timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
+                    except Exception as e:
+                        timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
+        try:
+            timeList = [datetime.datetime(*x[:3]) for x in timeList]
+        except Exception as e:
+            pass
+        #qid=re.findall(r'[0-9]{5}',file)
+        qid=file.split(".")[0]
+        for i in range(0, len(timeList)):
+            sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
+            sheet.write(i + temp, 1, qid)
+            sheet.write(i + temp, 2, countList[i])
+        temp = temp + i + 1
 
 
-        if check == "账号":
-            timeList = sh.col_values(start_rowx=2, colx=1)
-            countList = sh.col_values(start_rowx=2, colx=2)
-            try:
-                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
-            except Exception as e:
-                timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
-                timeList = [datetime.datetime(*x[:3]) for x in timeList]
-            #qid=re.findall(r'[0-9]{5}',file)
-            qid=file.split(".")[0]
-            for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
-                sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, countList[i])
-            temp = temp + i + 1
-        if check == "SoftStat":
-            timeList = sh.col_values(start_rowx=2, colx=1)
-            #print(timeList)
-            countList = sh.col_values(start_rowx=2, colx=2)
-            countList=[ x.strip() for x in countList ]
-            #qid = re.findall(r'[0-9]{5}', file)
-            qid = file.split(".")[0]
-            try:
-                #timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-1]]
-                timeList = [x.strip() for x in timeList[:-1]]
-                #print(timeList)
-                #timeList = [time.strptime(x.strip('\r\n').strip(" "), "%Y-%m-%d") for x in timeList]
-
-                #timeList = [datetime.datetime(*x[:3]) for x in timeList]
-            except Exception as e:
-                print(e)
-            for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i])
-                sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, countList[i])
-            temp = temp + i + 1
-        if check == "序号":
-            timeList = sh.col_values(start_rowx=1, colx=1)
-            countList = sh.col_values(start_rowx=1, colx=5)
-            qidList= sh.col_values(start_rowx=1, colx=4)
-            qidList=[file.split(".")[0]+"-"+x for x in qidList]
-            try:
-                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
-            except Exception as e:
-                timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
-                timeList = [datetime.datetime(*x[:3]) for x in timeList]
-            for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
-                sheet.write(i + temp, 1, qidList[i])
-                sheet.write(i + temp, 2, countList[i])
-            temp = temp + i + 1
-        if check == "日期":
-            timeList = sh.col_values(start_rowx=1, colx=0)
-            countList = sh.col_values(start_rowx=1, colx=1)
-            #qid = re.findall(r'[0-9]{5}', file)
-            qid = file.split(".")[0]
-            try:
-                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
-            except Exception as e:
-                timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
-                timeList = [datetime.datetime(*x[:3]) for x in timeList]
-            for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
-                sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, countList[i])
-            temp = temp + i + 1
 
     ctime = time.strftime("%Y-%m-%d", time.localtime())
     basedir = os.path.dirname(dir)
