@@ -237,9 +237,13 @@ def ruanjian(dir):
         sh = wb.sheet_by_index(0)  # 第一个表
 
         # time=sh.cell(4,0).value
-
-        timeList = sh.col_values(start_rowx=1, colx=0)
-        countList = sh.col_values(start_rowx=1, colx=1)
+        if sh.ncols == 2:
+            timeList = sh.col_values(start_rowx=1, colx=0)
+            countList = sh.col_values(start_rowx=1, colx=1)
+        elif sh.ncols == 1:
+            resultList=sh.col_values(start_rowx=1,colx=0)
+            timeList=[x.spilit('\t')[0] for x in resultList]
+            countList=[x.spilit('\t')[1] for x in resultList]
         try:
             timeList = [time.strptime(x.strip(), "%Y%m%d") for x in timeList]
 
