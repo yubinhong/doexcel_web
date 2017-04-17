@@ -211,7 +211,7 @@ def dianshang(dir):
     basedir = os.path.dirname(dir)
     filepath = os.path.join(basedir, u"电商汇总-%s.xls" % (ctime))
     wbk.save(filepath)
-
+    uniq(filepath)
     return filepath
 
 
@@ -276,7 +276,7 @@ def ruanjian(dir):
     basedir = os.path.dirname(dir)
     filepath = os.path.join(basedir, u"软件汇总-%s.xls" % (ctime))
     wbk.save(filepath)
-    uniq(filepath)
+
     return filepath
 
 if __name__=="__main__":
