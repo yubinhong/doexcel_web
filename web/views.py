@@ -19,17 +19,53 @@ def yuming(request):
     :param request: 请求
     :return:
     """
-    path='yuming'
+    return render(request, 'yuming.html')
+
+def yuming1(request):
+    """
+      文件接收 view
+      :param request: 请求
+      :return:
+      """
+    """
+    文件接收 view
+    :param request: 请求
+    :return:
+    """
+    path='yuming1'
     if request.method == 'POST':
         files=request.FILES.getlist('my_files')
         dir=return_files_dir(files,path)
-        downloadfile=main.yuming(dir)
+        downloadfile=main.yuming1(dir)
         print(downloadfile)
         #response=download.download(downloadfile)
         #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
         return redirect('%s' % (downloadfile))
 
-    return render(request, 'yuming.html')
+    return render(request, 'yuming1.html')
+
+def yuming2(request):
+    """
+      文件接收 view
+      :param request: 请求
+      :return:
+      """
+    """
+    文件接收 view
+    :param request: 请求
+    :return:
+    """
+    path='yuming2'
+    if request.method == 'POST':
+        files=request.FILES.getlist('my_files')
+        dir=return_files_dir(files,path)
+        downloadfile=main.yuming2(dir)
+        print(downloadfile)
+        #response=download.download(downloadfile)
+        #return redirect('http://doexcel.miguan.com%s' % (downloadfile))
+        return redirect('%s' % (downloadfile))
+
+    return render(request, 'yuming2.html')
 
 def dianshang(request):
     """

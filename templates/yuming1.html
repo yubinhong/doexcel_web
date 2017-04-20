@@ -1,0 +1,15 @@
+yuming.html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>域名汇总</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" method="post" action="/yuming1/">
+        {% csrf_token %}
+        <input type="file" name="my_files" multiple="multiple"/>
+        <br/>
+        <input type="submit" value="域名非cnzz汇总">
+    </form>
+</body>
+</html>

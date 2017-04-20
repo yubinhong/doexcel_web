@@ -20,6 +20,8 @@ from web import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^yuming/',views.yuming),
+    url(r'^yuming1/',views.yuming1),
+    url(r'^yuming2/',views.yuming2),
     url(r'^daohang/',views.daohang),
     url(r'^dianshang/', views.dianshang),
     url(r'^ruanjian/', views.ruanjian),
