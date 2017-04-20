@@ -74,8 +74,9 @@ def daohang(dir):
     sheet = wbk.add_sheet(u"导航汇总")
     sheet.write(0, 0, u"时间")
     sheet.write(0, 1, u"渠道子ID")
-    sheet.write(0, 2, u"通过2345浏览器")
-    sheet.write(0, 3, u"通过其他浏览器")
+    sheet.write(0, 2, u"第三方浏览器量")
+    sheet.write(0, 3, u"官方浏览器量")
+    sheet.write(0, 4, u'cnzz量')
     temp = 1
     style1 = xlwt.XFStyle()
     style1.num_format_str = 'YYYY-MM-DD'
@@ -107,8 +108,8 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
                 sheet.write(i+temp,1,qid)
-                sheet.write(i+temp,2,browser1List[i])
                 sheet.write(i+temp,3,browser2List[i])
+                sheet.write(i+temp,2,browser1List[i])
             temp=temp+i+1
         if check=="子账户号":
             try:
@@ -122,8 +123,8 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,browser1List[i])
-                sheet.write(i+temp,3,"")
+                sheet.write(i+temp,3,browser2List[i])
+                sheet.write(i+temp,2,"")
             temp=temp+i+1
         if check=="渠道代码":
             try:
@@ -144,8 +145,8 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,"")
-                sheet.write(i+temp,3,browser2List[i])
+                sheet.write(i+temp,3,"")
+                sheet.write(i+temp,2,browser1List[i])
             temp=temp+i+1
 
 
