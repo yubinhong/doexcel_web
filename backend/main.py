@@ -333,7 +333,7 @@ def ruanjian(dir):
             for i in range(0, len(timeList)):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
                 sheet.write(i + temp, 1, qidList[i])
-                sheet.write(i + temp, 2, countList[i])
+                sheet.write(i + temp, 2, int(countList[i]))
         else:
             for i in range(0, len(timeList)):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
