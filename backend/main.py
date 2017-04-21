@@ -304,6 +304,10 @@ def ruanjian(dir):
             resultList=sh.col_values(start_rowx=1,colx=0)
             timeList=[x.split('\t')[0] for x in resultList]
             countList=[x.split('\t')[1] for x in resultList]
+        elif sh.ncols==3:
+            timeList = sh.col_values(start_rowx=1, colx=0)
+            qidList=sh.col_values(start_rowx=1, colx=1)
+            countList = sh.col_values(start_rowx=1, colx=2)
         try:
             timeList = [time.strptime(x.strip(), "%Y%m%d") for x in timeList]
 
@@ -324,10 +328,17 @@ def ruanjian(dir):
             pass
         #qid=re.findall(r'[0-9]{5}',file)
         qid=file.split(".")[0]
-        for i in range(0, len(timeList)):
-            sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
-            sheet.write(i + temp, 1, qid)
-            sheet.write(i + temp, 2, countList[i])
+        if sh.ncols==3:
+            qidList=[qid+x for x in qidList]
+            for i in range(0, len(timeList)):
+                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i + temp, 1, qidList[i])
+                sheet.write(i + temp, 2, countList[i])
+        else:
+            for i in range(0, len(timeList)):
+                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i + temp, 1, qid)
+                sheet.write(i + temp, 2, countList[i])
         temp = temp + i + 1
 
 
