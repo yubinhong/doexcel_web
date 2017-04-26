@@ -135,7 +135,6 @@ def daohang(dir):
     sheet.write(0, 1, u"渠道子ID")
     sheet.write(0, 2, u"第三方浏览器量")
     sheet.write(0, 3, u"官方浏览器量")
-    sheet.write(0, 4, u'cnzz量')
     temp = 1
     style1 = xlwt.XFStyle()
     style1.num_format_str = 'YYYY-MM-DD'
