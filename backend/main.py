@@ -175,14 +175,13 @@ def daohang(dir):
             except Exception as e:
                 timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
                 timeList = [datetime.datetime(*x[:3]) for x in timeList]
-            browser2List = sh.col_values(start_rowx=1, colx=2)
+            browser1List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
             qidList=[file.split(".")[0]+"-"+x for x in qidList]
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,"")
-                sheet.write(i+temp,3,browser2List[i])
+                sheet.write(i+temp,2,browser1List[i])
             temp=temp+i+1
         if check=="渠道代码":
             try:
