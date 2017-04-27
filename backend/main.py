@@ -166,8 +166,8 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
                 sheet.write(i+temp,1,qid)
-                sheet.write(i+temp,3,browser2List[i])
-                sheet.write(i+temp,2,browser1List[i])
+                sheet.write(i+temp,2,browser2List[i])
+                sheet.write(i+temp,3,browser1List[i])
             temp=temp+i+1
         if check=="子账户号":
             try:
