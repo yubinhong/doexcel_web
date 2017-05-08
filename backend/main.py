@@ -45,7 +45,8 @@ def yuming1(dir):
 
         if check3=="浏览次数":
             if check2 == "浏览次数":
-                domain = sh.cell(1, 1).value
+                domain = sh.cell(3, 0).value
+                domain = re.findall('\((.*)\)-', domain)[0]
                 timeList = sh.col_values(start_rowx=9, colx=0)
                 ipList = sh.col_values(start_rowx=9, colx=3)
                 for i in range(0, len(ipList) - 2):
