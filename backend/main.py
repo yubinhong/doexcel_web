@@ -153,12 +153,13 @@ def daohang(dir):
         check=sh.cell(0,1).value
         timeList = sh.col_values(start_rowx=1, colx=0)
         #print(type(timeList[0]))
-
+        if timeList[-1]=="汇总" or timeList[-1]=="总计":
+            timeList=timeList[:-1]
         if check=="通过2345浏览器":
             try:
-                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-1]]
+                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
             except Exception as e:
-                timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-1]]
+                timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
                 timeList = [datetime.datetime(*x[:3]) for x in timeList]
             browser1List = sh.col_values(start_rowx=1,colx=1)
             browser2List = sh.col_values(start_rowx=1, colx=3)
@@ -186,17 +187,17 @@ def daohang(dir):
             temp=temp+i+1
         if check=="渠道代码":
             try:
-                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-1]]
+                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
             except Exception as e:
                 try:
                     timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-3]]
                 except Exception as e:
-                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-1]]
+                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
                     timeList = [datetime.datetime(*x[:3]) for x in timeList]
             browser1List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
             try:
-                qidList=[re.findall(r"[0-9]{5}",x)[0] for x in qidList[:-1]]
+                qidList=[re.findall(r"[0-9]{5}",x)[0] for x in qidList]
             except Exception as e:
                 qidList = [re.findall(r"[0-9]{5}", x)[0] for x in qidList[:-3]]
             qidList= [file.split(".")[0]+"-"+x for x in qidList]
@@ -208,12 +209,12 @@ def daohang(dir):
             temp=temp+i+1
         if check == "第三方浏览器":
             try:
-                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-1]]
+                timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
             except Exception as e:
                 try:
                     timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList[:-3]]
                 except Exception as e:
-                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList[:-1]]
+                    timeList = [time.strptime(x, "%Y-%m-%d") for x in timeList]
                     timeList = [datetime.datetime(*x[:3]) for x in timeList]
             browser1List = sh.col_values(start_rowx=1, colx=1)
             qid=file.split(".")[0]
