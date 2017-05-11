@@ -344,7 +344,7 @@ def ruanjian(dir):
         #qid=re.findall(r'[0-9]{5}',file)
         qid=file.split(".")[0]
         if sh.ncols==3:
-            qidList=[qid+"-"+str(int(x)) for x in qidList]
+            qidList=[qid+"-"+str(x) for x in qidList]
             for i in range(0, len(timeList)):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qidList[i])
