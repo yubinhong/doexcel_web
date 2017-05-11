@@ -278,7 +278,7 @@ def dianshang(dir):
         for i in range(0,len(timeList)):
             sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
             sheet.write(i+temp,1,qid)
-            sheet.write(i+temp,2,countList[i].strip('\t'))
+            sheet.write(i+temp,2,str(int(countList[i])).strip('\t'))
         temp=temp+i+1
 
 
@@ -353,7 +353,7 @@ def ruanjian(dir):
             for i in range(0, len(timeList)):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, countList[i].strip('\t').strip())
+                sheet.write(i + temp, 2, str(int(countList[i])).strip('\t').strip())
         temp = temp + i + 1
 
 
