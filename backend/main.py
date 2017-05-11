@@ -117,7 +117,7 @@ def yuming2(dir):
                 domainList = sh.col_values(start_rowx=6, colx=0)
                 ipList = sh.col_values(start_rowx=6, colx=3)
                 for i in range(0,len(ipList)-2):
-                    sheet.write(i+temp,0,atime)
+                    sheet.write(i+temp,0,atime.strip('\t').strip())
                     sheet.write(i+temp,1,qid)
                     sheet.write(i+temp,2,ipList[i])
                 temp=temp+i+1
@@ -166,10 +166,10 @@ def daohang(dir):
             #qid=re.findall(r"[0-9]{5}",file)
             qid=file.split(".")[0]
             for i in range(0,len(timeList)):
-                sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qid)
-                sheet.write(i+temp,2,browser2List[i])
-                sheet.write(i+temp,3,browser1List[i])
+                sheet.write(i+temp,2,browser2List[i].strip('\t').strip())
+                sheet.write(i+temp,3,browser1List[i].strip('\t').strip())
             temp=temp+i+1
         if check=="子账户号":
             try:
@@ -181,9 +181,9 @@ def daohang(dir):
             qidList = sh.col_values(start_rowx=1, colx=1)
             qidList=[file.split(".")[0]+"-"+x for x in qidList]
             for i in range(0,len(timeList)):
-                sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,browser1List[i])
+                sheet.write(i+temp,2,browser1List[i].strip('\t').strip())
             temp=temp+i+1
         if check=="渠道代码":
             try:
@@ -202,9 +202,9 @@ def daohang(dir):
                 qidList = [re.findall(r"[0-9]{5}", x)[0] for x in qidList[:-3]]
             qidList= [file.split(".")[0]+"-"+x for x in qidList]
             for i in range(0,len(timeList)):
-                sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,browser1List[i])
+                sheet.write(i+temp,2,browser1List[i].strip('\t').strip())
                 sheet.write(i+temp,3,"")
             temp=temp+i+1
         if check == "第三方浏览器":
@@ -219,9 +219,9 @@ def daohang(dir):
             browser1List = sh.col_values(start_rowx=1, colx=1)
             qid=file.split(".")[0]
             for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, browser1List[i])
+                sheet.write(i + temp, 2, browser1List[i].strip('\t').strip())
             temp = temp + i + 1
 
     ctime=time.strftime("%Y-%m-%d",time.localtime())
@@ -276,9 +276,9 @@ def dianshang(dir):
         except Exception as e:
             pass
         for i in range(0,len(timeList)):
-            sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d'))
+            sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
             sheet.write(i+temp,1,qid)
-            sheet.write(i+temp,2,countList[i])
+            sheet.write(i+temp,2,countList[i].strip('\t'))
         temp=temp+i+1
 
 
@@ -346,14 +346,14 @@ def ruanjian(dir):
         if sh.ncols==3:
             qidList=[qid+"-"+str(int(x)) for x in qidList]
             for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qidList[i])
                 sheet.write(i + temp, 2, str(int(countList[i])))
         else:
             for i in range(0, len(timeList)):
-                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d'))
+                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, countList[i])
+                sheet.write(i + temp, 2, countList[i].strip('\t').strip())
         temp = temp + i + 1
 
 
