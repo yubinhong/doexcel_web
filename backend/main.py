@@ -168,8 +168,8 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qid)
-                sheet.write(i+temp,2,browser2List[i].strip('\t').strip())
-                sheet.write(i+temp,3,browser1List[i].strip('\t').strip())
+                sheet.write(i+temp,2,str(browser2List[i]).strip('\t').strip())
+                sheet.write(i+temp,3,str(browser1List[i]).strip('\t').strip())
             temp=temp+i+1
         if check=="子账户号":
             try:
@@ -183,7 +183,7 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,browser1List[i].strip('\t').strip())
+                sheet.write(i+temp,2,str(browser1List[i]).strip('\t').strip())
             temp=temp+i+1
         if check=="渠道代码":
             try:
@@ -204,7 +204,7 @@ def daohang(dir):
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qidList[i])
-                sheet.write(i+temp,2,browser1List[i].strip('\t').strip())
+                sheet.write(i+temp,2,str(browser1List[i]).strip('\t').strip())
                 sheet.write(i+temp,3,"")
             temp=temp+i+1
         if check == "第三方浏览器":
@@ -221,7 +221,7 @@ def daohang(dir):
             for i in range(0, len(timeList)):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qid)
-                sheet.write(i + temp, 2, browser1List[i].strip('\t').strip())
+                sheet.write(i + temp, 2, str(browser1List[i]).strip('\t').strip())
             temp = temp + i + 1
 
     ctime=time.strftime("%Y-%m-%d",time.localtime())
