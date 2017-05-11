@@ -179,10 +179,8 @@ def daohang(dir):
                 timeList = [datetime.datetime(*x[:3]) for x in timeList]
             browser1List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
-            try:
-                qidList=[file.split(".")[0]+"-"+str(int(x)) for x in qidList]
-            except Exception as e:
-                qidList = [file.split(".")[0] + "-" + str(x) for x in qidList]
+
+            qidList = [file.split(".")[0] + "-" + str(x).strip() for x in qidList]
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i+temp,1,qidList[i])
