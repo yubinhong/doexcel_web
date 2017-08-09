@@ -174,7 +174,7 @@ def daohang(dir):
                 sheet.write(i+temp,2,str(int(browser2List[i])).strip('\t').strip())
                 sheet.write(i+temp,3,str(int(browser1List[i])).strip('\t').strip())
             temp=temp+i+1
-        if check=="子账户号":
+        if check=="子账号":
             try:
                 timeList = [xlrd.xldate.xldate_as_datetime(x, 0) for x in timeList]
             except Exception as e:
