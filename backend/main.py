@@ -187,6 +187,8 @@ def daohang(dir):
             for x in qidList:
                 if x!=0:
                     qidList1.append("%04d" % x)
+                else:
+                    qidList1.append(x)
             qidList=qidList1
             qidList = [file.split(".")[0] + "-" + str(x).strip() for x in qidList]
             for i in range(0,len(timeList)):
