@@ -183,7 +183,7 @@ def daohang(dir):
             browser1List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
             qidList=[int(x) for x in qidList]
-            qidList=["%4d" % x for x in qidList]
+            qidList=["%04d" % x for x in qidList]
             print(qidList)
             qidList = [file.split(".")[0] + "-" + str(x).strip() for x in qidList]
             for i in range(0,len(timeList)):
