@@ -183,13 +183,13 @@ def daohang(dir):
             browser1List = sh.col_values(start_rowx=1, colx=2)
             qidList = sh.col_values(start_rowx=1, colx=1)
             qidList=[int(x) for x in qidList]
-            qidList1=[]
-            for x in qidList:
-                if x!=0:
-                    qidList1.append("%04d" % x)
-                else:
-                    qidList1.append(x)
-            qidList=qidList1
+            qidList=["%04d" % x if x!=0 else x for x in qidList]
+            #for x in qidList:
+            #    if x!=0:
+            #        qidList1.append("%04d" % x)
+            #    else:
+            #        qidList1.append(x)
+            #qidList=qidList1
             qidList = [file.split(".")[0] + "-" + str(x).strip() for x in qidList]
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
