@@ -184,6 +184,7 @@ def daohang(dir):
             qidList = sh.col_values(start_rowx=1, colx=1)
             qidList=[int(x) for x in qidList]
             qidList=["%4d" % x for x in qidList]
+            print(qidList)
             qidList = [file.split(".")[0] + "-" + str(x).strip() for x in qidList]
             for i in range(0,len(timeList)):
                 sheet.write(i+temp,0,timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
