@@ -75,9 +75,12 @@ def yuming2(dir):
     sheet = wbk.add_sheet(u"域名汇总")
     sheet.write(0, 0, u"日期")
     sheet.write(0, 1, u"渠道子ID")
-    sheet.write(0,2,u"第三方浏览器量/软件安装量/订单数/搜索次数")
-    sheet.write(0,3,u"官方浏览器量/金额")
-    sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数")
+    sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
+    sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
+    sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
+    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,6,u"本周安装到下周留存")
+    sheet.write(0,7,u"累计三天")
     temp = 1
     for file in files:
         path=os.path.join(dir,file)
@@ -136,9 +139,12 @@ def daohang(dir):
     sheet = wbk.add_sheet(u"导航汇总")
     sheet.write(0, 0, u"日期")
     sheet.write(0, 1, u"渠道子ID")
-    sheet.write(0, 2, u"第三方浏览器量/软件安装量/订单数/搜索次数")
-    sheet.write(0, 3, u"官方浏览器量/金额")
-    sheet.write(0,4,u"CNZZ量/IP数/加量ＩＰ数")
+    sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
+    sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
+    sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
+    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,6,u"本周安装到下周留存")
+    sheet.write(0,7,u"累计三天")
     temp = 1
     style1 = xlwt.XFStyle()
     style1.num_format_str = 'YYYY-MM-DD'
@@ -242,9 +248,12 @@ def dianshang(dir):
     sheet = wbk.add_sheet(u"电商汇总")
     sheet.write(0, 0, u"日期")
     sheet.write(0, 1, u"渠道子ID")
-    sheet.write(0, 2, u"第三方浏览器量/软件安装量/订单数/搜索次数")
-    sheet.write(0,3,u"官方浏览器量/金额")
-    sheet.write(0,4,u"CNZZ量/IP数/加量ＩＰ数")
+    sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
+    sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
+    sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
+    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,6,u"本周安装到下周留存")
+    sheet.write(0,7,u"累计三天")
     temp = 1
     style1 = xlwt.XFStyle()
     style1.num_format_str = 'YYYY-MM-DD'
@@ -304,9 +313,12 @@ def ruanjian(dir):
     sheet = wbk.add_sheet(u"软件汇总")
     sheet.write(0, 0, u"日期")
     sheet.write(0, 1, u"渠道子ID")
-    sheet.write(0, 2, u"第三方浏览器量/软件安装量/订单数/搜索次数")
-    sheet.write(0,3,u"官方浏览器量/金额")
-    sheet.write(0,4,u"CNZZ量/IP数/加量ＩＰ数")
+    sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
+    sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
+    sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
+    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,6,u"本周安装到下周留存")
+    sheet.write(0,7,u"累计三天")
     temp = 1
     style1 = xlwt.XFStyle()
     style1.num_format_str = 'YYYY-MM-DD'
