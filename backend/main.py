@@ -78,7 +78,7 @@ def yuming2(dir):
     sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
     sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
     sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
-    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,5,u"30天重复安装/预估收入")
     sheet.write(0,6,u"本周安装到下周留存")
     sheet.write(0,7,u"累计三天")
     temp = 1
@@ -142,7 +142,7 @@ def daohang(dir):
     sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
     sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
     sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
-    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,5,u"30天重复安装/预估收入")
     sheet.write(0,6,u"本周安装到下周留存")
     sheet.write(0,7,u"累计三天")
     temp = 1
@@ -251,7 +251,7 @@ def dianshang(dir):
     sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
     sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
     sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
-    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,5,u"30天重复安装/预估收入")
     sheet.write(0,6,u"本周安装到下周留存")
     sheet.write(0,7,u"累计三天")
     temp = 1
@@ -316,7 +316,7 @@ def ruanjian(dir):
     sheet.write(0,2,u"第三方浏览器量/软件日安装/点击数/搜索次数")
     sheet.write(0,3,u"官方浏览器量/金额/预估结算日安装/付款笔数")
     sheet.write(0, 4, u"CNZZ量/IP数/加量ＩＰ数/安装后卸载/效果预估")
-    sheet.write(0,5,u"30天重复安装")
+    sheet.write(0,5,u"30天重复安装/预估收入")
     sheet.write(0,6,u"本周安装到下周留存")
     sheet.write(0,7,u"累计三天")
     temp = 1
