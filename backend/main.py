@@ -344,6 +344,11 @@ def ruanjian(dir):
             timeList = sh.col_values(start_rowx=1, colx=0)
             qidList=sh.col_values(start_rowx=1, colx=1)
             countList = sh.col_values(start_rowx=1, colx=2)
+        elif sh.ncols==4:
+            timeList=sh.col_values(start_rowx=1,colx=0)
+            qidList=sh.col_values(start_rowx=1,colx=1)
+            countList=sh.col_values(start_rowx=1,colx=2)
+            threedayList=sh.col_values(start_rowx=1,colx=3)
         try:
             timeList = [time.strptime(x.strip(), "%Y%m%d") for x in timeList]
 
@@ -373,6 +378,16 @@ def ruanjian(dir):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
                 sheet.write(i + temp, 1, qidList[i])
                 sheet.write(i + temp, 2, str(int(countList[i])))
+        elif sh.ncols==4:
+            try:
+                qidList=[qid+"-"+str(int(x)) for x in qidList]
+            except Exception as e:
+                qidList=[qid+"-"+str(x) for x in qidList]
+            for i in range(0,len(timeList)):
+                sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
+                sheet.write(i + temp, 1, qidList[i])
+                sheet.write(i + temp, 2, str(int(countList[i])))
+                sheet.write(i + temp, 7, threedayList[i])
         else:
             for i in range(0, len(timeList)):
                 sheet.write(i + temp, 0, timeList[i].strftime('%Y-%m-%d').strip('\t').strip())
